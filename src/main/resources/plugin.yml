@@ -1,0 +1,4 @@
+name: EventListener
+version: '1.0-SNAPSHOT'
+main: Discordbot.eventListener.EventListener
+api-version: '1.21'
