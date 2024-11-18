@@ -24,7 +24,6 @@ public class Events implements Listener {
         String player = event.getPlayer().getDisplayName();
         String eventName = event.getEventName();
         Data data = new Data(player, eventName);
-        data.onlinePlayers++;
         Server.send(data);
 }
 }
