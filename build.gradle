@@ -19,6 +19,10 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT")
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.18.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.18.1'
 }
 
 def targetJavaVersion = 21
