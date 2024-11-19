@@ -22,7 +22,6 @@ public class Events implements Listener {
 }
     @EventHandler
     public void onPLayerJoin(PlayerJoinEvent event) {
-        Bukkit.getServer().getLogger().info("PLAYER JOINEDD");
         String player = event.getPlayer().getDisplayName();
         String eventName = event.getEventName();
         Data data = new Data(player, eventName);
