@@ -5,6 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+
 public class Events implements Listener {
 
 
@@ -25,5 +27,12 @@ public class Events implements Listener {
         String eventName = event.getEventName();
         Data data = new Data(player, eventName);
         Server.send(data);
+}
+@EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+    String player = event.getPlayer().getDisplayName();
+    String eventName = event.getEventName();
+    Data data = new Data(player, eventName);
+    Server.send(data);
 }
 }
