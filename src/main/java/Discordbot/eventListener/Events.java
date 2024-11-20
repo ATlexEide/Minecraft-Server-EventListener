@@ -18,22 +18,25 @@ public class Events implements Listener {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @EventHandler
     public void onPLayerJoin(PlayerJoinEvent event) {
-        Data EventData = new Data();
-        EventData.player = event.getPlayer().getName();
-        EventData.event = event.getEventName();
-        EventData.playerCount++;
-        String json = gson.toJson(EventData);
+        Data JoinData = new Data();
+        JoinData.player = event.getPlayer().getName();
+        JoinData.event = event.getEventName();
+        JoinData.playerCount++;
+        String json = gson.toJson(JoinData);
         Bukkit.getServer().getLogger().info("JSON:");
         Bukkit.getServer().getLogger().info(json);
-        String player = event.getPlayer().getDisplayName();
-        String eventName = event.getEventName();
         Server.send(json);
 }
 @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-    String player = event.getPlayer().getDisplayName();
-    String eventName = event.getEventName();
-    /*Server.send();*/
+    Data LeaveData = new Data();
+    LeaveData.player = event.getPlayer().getName();
+    LeaveData.event = event.getEventName();
+    LeaveData.playerCount--;
+    String json = gson.toJson(LeaveData);
+    Bukkit.getServer().getLogger().info("JSON:");
+    Bukkit.getServer().getLogger().info(json);
+    Server.send(json);
 }
 /*@EventHandler
     public void onPlayerChangeGameMode(PlayerGameModeChangeEvent event) {
