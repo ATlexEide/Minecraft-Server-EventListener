@@ -9,9 +9,12 @@ import java.net.http.*;
 
 
 public class Server {
-    static void send(Data data){
+    static void send(String data){
         try {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
             String json = gson.toJson(data);
             Bukkit.getServer().getLogger().info("JSON:");
             Bukkit.getServer().getLogger().info(json);
@@ -21,7 +24,7 @@ public class Server {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://localhost:3000/events"))
                     .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .POST(HttpRequest.BodyPublishers.ofString(data))
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
