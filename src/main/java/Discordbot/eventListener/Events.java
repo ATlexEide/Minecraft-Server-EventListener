@@ -18,10 +18,10 @@ public class Events implements Listener {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @EventHandler
     public void onPLayerJoin(PlayerJoinEvent event) {
+        Data.onlinePlayers++;
         Data JoinData = new Data();
         JoinData.player = event.getPlayer().getName();
         JoinData.event = event.getEventName();
-        JoinData.playerCount++;
         String json = gson.toJson(JoinData);
         Bukkit.getServer().getLogger().info("JSON:");
         Bukkit.getServer().getLogger().info(json);
@@ -29,10 +29,10 @@ public class Events implements Listener {
 }
 @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
+    Data.onlinePlayers--;
     Data LeaveData = new Data();
     LeaveData.player = event.getPlayer().getName();
     LeaveData.event = event.getEventName();
-    LeaveData.playerCount--;
     String json = gson.toJson(LeaveData);
     Bukkit.getServer().getLogger().info("JSON:");
     Bukkit.getServer().getLogger().info(json);
