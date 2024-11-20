@@ -29,8 +29,6 @@ public class Events implements Listener {
     LeaveData.player = event.getPlayer().getName();
     LeaveData.event = event.getEventName();
     String json = gson.toJson(LeaveData);
-    Bukkit.getServer().getLogger().info("JSON:");
-    Bukkit.getServer().getLogger().info(json);
     Server.send(json);
 }
 @EventHandler

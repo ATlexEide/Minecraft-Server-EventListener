@@ -11,16 +11,9 @@ import java.net.http.*;
 public class Server {
     static void send(String data){
         try {
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            String json = gson.toJson(data);
-            Bukkit.getServer().getLogger().info("JSON:");
-            Bukkit.getServer().getLogger().info(json);
+            Bukkit.getServer().getLogger().info(data);
 
             HttpClient client = HttpClient.newHttpClient();
-
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://localhost:3000/events"))
                     .header("Content-Type", "application/json")
