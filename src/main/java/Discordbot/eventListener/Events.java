@@ -36,6 +36,7 @@ public class Events implements Listener {
     Data GameModeChangeData = new Data();
     GameModeChangeData.player = event.getPlayer().getDisplayName();
     GameModeChangeData.event = event.getEventName();
+    GameModeChangeData.gamemode = event.getPlayer().getGameMode().toString();
     GameModeChangeData.newGamemode = event.getNewGameMode().toString();
     String json = gson.toJson(GameModeChangeData);
     Server.send(json);

@@ -6,5 +6,6 @@ public class Data {
     public String player;
     public String event;
     public String message;
+    public String gamemode;
     public String newGamemode;
 }
