@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -32,12 +33,13 @@ public class Events implements Listener {
     Bukkit.getServer().getLogger().info(json);
     Server.send(json);
 }
-/*@EventHandler
+@EventHandler
     public void onPlayerChangeGameMode(PlayerGameModeChangeEvent event) {
-    String player = event.getPlayer().getDisplayName();
-    String eventName = event.getEventName();
-    GameMode newGamemode = event.getNewGameMode();
-    Data data = new Data(event);
-    Server.send(data);
-}*/
+    Data GameModeChangeData = new Data();
+    GameModeChangeData.player = event.getPlayer().getDisplayName();
+    GameModeChangeData.event = event.getEventName();
+    GameModeChangeData.newGamemode = event.getNewGameMode().toString();
+    String json = gson.toJson(GameModeChangeData);
+    Server.send(json);
+}
 }
