@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -30,6 +31,21 @@ public class Events implements Listener {
     LeaveData.event = event.getEventName();
     String json = gson.toJson(LeaveData);
     Server.send(json);
+}
+@EventHandler
+    public void onChat(AsyncPlayerChatEvent event) {
+
+/*
+    System.out.println(event.isAsynchronous());
+    System.out.println(Bukkit.isPrimaryThread());
+*/
+
+    Data chatData = new Data();
+        chatData.player = event.getPlayer().getName();
+        chatData.event = "ChatEvent";
+        chatData.messsage = event.getMessage();
+        String json = gson.toJson(chatData);
+        Server.send(json);
 }
 @EventHandler
     public void onPlayerChangeGameMode(PlayerGameModeChangeEvent event) {
