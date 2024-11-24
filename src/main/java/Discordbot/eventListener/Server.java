@@ -22,17 +22,9 @@ public class Server {
             HttpRequest getRequest = HttpRequest.newBuilder()
                     .uri(URI.create("http://localhost:3000/server/chat"))
                     .build();
-            HttpResponse getResponse = client.sendAsync(getRequest, HttpResponse.BodyHandlers.ofString()).join();
-            Bukkit.getLogger().info(getResponse.toString());
-            if(getResponse.statusCode() == 200){
-                Bukkit.getServer().broadcastMessage(getResponse.body().toString());
-            }
+
     }catch(IOException | InterruptedException e){
         Bukkit.getLogger().severe("Error sending data, discord bot possibly not running");
     }
 }
-
-
-
-
 }
