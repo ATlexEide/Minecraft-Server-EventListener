@@ -28,7 +28,7 @@ public class Server {
                 Bukkit.getServer().broadcastMessage(getResponse.body().toString());
             }
     }catch(IOException | InterruptedException e){
-        Bukkit.getLogger().severe("Error sending data");
+        Bukkit.getLogger().severe("Error sending data, discord bot possibly not running");
     }
 }
 
