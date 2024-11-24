@@ -8,6 +8,7 @@ public class Data {
 
     public String player;
     public String messsage;
+    public String discordMesssage;
     public String event;
     public String motd;
     public String gamemode;
