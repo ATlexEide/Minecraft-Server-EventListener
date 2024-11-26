@@ -43,7 +43,7 @@ public class Events implements Listener {
     Data chatData = new Data();
         chatData.player = event.getPlayer().getName();
         chatData.event = "ChatEvent";
-        chatData.messsage = event.getMessage();
+        chatData.message = event.getMessage();
         String json = gson.toJson(chatData);
         Server.send(json);
 }
@@ -52,8 +52,8 @@ public class Events implements Listener {
     Data GameModeChangeData = new Data();
     GameModeChangeData.player = event.getPlayer().getDisplayName();
     GameModeChangeData.event = event.getEventName();
-    GameModeChangeData.gamemode = event.getPlayer().getGameMode().toString();
-    GameModeChangeData.newGamemode = event.getNewGameMode().toString();
+    GameModeChangeData.gameMode = event.getPlayer().getGameMode().toString();
+    GameModeChangeData.newGameMode = event.getNewGameMode().toString();
     String json = gson.toJson(GameModeChangeData);
     Server.send(json);
 }
